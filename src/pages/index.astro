@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { get_Items } from "../Services/bd.service";
+import Card from "../components/Card.astro";
+
+const data = await get_Items();
+---
+
+<Layout title="Bienvenido a Users">
+  <div class="flex">
+    {
+      data?.map((e) => {
+        return (
+          <Card users={e}></Card>
+        );
+      })
+    }
+  </div>
+</Layout>
+
+<style>
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+</style>

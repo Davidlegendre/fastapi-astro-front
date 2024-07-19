@@ -1,0 +1,70 @@
+---
+import { type User } from "../types/types";
+
+interface Props {
+    users: User
+}
+
+const { users } = Astro.props;
+---
+
+<div class="card">
+  <p class="id_title">{users.id}</p>
+  <p class="title">{users.nombre}</p>
+  <div class="details">
+    <p>{users.dni}</p>
+    <p class="separator">|</p>
+    <p>{users.edad}</p>
+  </div>  
+  <a href=`/details/${users.id}`>Ver detalle</a>
+</div>
+
+<style>
+    .card {
+    color: white;
+    width: 270px;
+    font-size: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: darkslategrey;
+    padding: 10px;
+    border-radius: 7px;
+	height: max-content;
+	position: relative;
+  }
+  .card p {
+    margin: 0px;
+  }
+  .card .id_title{
+	font-size: 10px;
+	background-color: darkslateblue;
+	padding: 4px 7px;
+	border-radius: 10px;
+	width: max-content;
+	position: absolute;
+	right: 0px;
+  }
+  .card .title{
+	font-family: 'Century Gothic';
+	font-size: 1.7rem;
+	margin-top: 30px;
+	margin-bottom: 7px;
+  }
+  .card .details {
+	display: flex;
+	width: 100%;
+	gap: 10px;
+	flex-direction: row;
+	align-items: center;
+  }
+  .card .details p
+  {
+	font-size: 12px;
+	font-family: 'Century Gothic Bold';
+	padding: 0px;
+  }
+  .card .details .separator
+  {
+	font-size: 10px;
+	margin-top: -1px;
+  }
+</style>

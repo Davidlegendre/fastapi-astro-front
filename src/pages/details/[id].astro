@@ -1,0 +1,24 @@
+---
+import { get_one_item } from "../../Services/bd.service";
+
+const { id } = Astro.params;
+if (id === null || id === undefined) return;
+const user = await get_one_item(id);
+---
+
+{
+  !user ? (
+    <p>No hay datos de ese id</p>
+  ) : (
+    <div>
+      <p>Detalle del usuario: {user?.nombre}</p>
+      <p class="id_title">{user?.id}</p>
+      <p class="title">{user?.nombre}</p>
+      <div class="details">
+        <p>{user?.dni}</p>
+        <p class="separator">|</p>
+        <p>{user?.edad}</p>
+      </div>
+    </div>
+  )
+}
